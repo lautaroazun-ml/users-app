@@ -1,6 +1,6 @@
 package com.lazun.usersapp.service.impl;
 
-import com.lazun.usersapp.models.entity.User;
+import com.lazun.usersapp.models.entity.UserEntity;
 import com.lazun.usersapp.repository.UserRepository;
 import com.lazun.usersapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   @Transactional
-  public User save(User user) {
+  public UserEntity save(UserEntity user) {
     return repository.save(user);
   }
 }
