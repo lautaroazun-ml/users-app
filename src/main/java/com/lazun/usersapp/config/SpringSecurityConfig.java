@@ -43,7 +43,7 @@ public class SpringSecurityConfig {
         .authorizeRequests()
         .antMatchers("/admin/**")
         .authenticated()
-        .antMatchers("/auth/**", "/user/**", "/users/**")
+        .antMatchers("/auth/**", "/user/**", "/users/**", "/fee/**")
         .anonymous()
         .anyRequest()
         .authenticated()
