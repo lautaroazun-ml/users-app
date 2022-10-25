@@ -72,8 +72,8 @@ public class ControllerExceptionHandler {
 
     String errorMsg =
         e.getBindingResult().getFieldErrors().stream()
-            .map(DefaultMessageSourceResolvable::toString)
-            .collect(Collectors.joining(".\n "));
+            .map(DefaultMessageSourceResolvable::getDefaultMessage)
+            .collect(Collectors.joining(".\n"));
 
     ApiError apiError = new ApiError("bad_request", errorMsg, HttpStatus.BAD_REQUEST.value());
     return ResponseEntity.status(apiError.getStatus()).body(apiError);

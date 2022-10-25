@@ -1,15 +1,19 @@
 package com.lazun.usersapp.models.dto;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class SignUpDTO {
-  @NotNull @NotEmpty private String name;
 
-  @NotNull @NotEmpty private String password;
+  @NotBlank(message = "Name may not be blank")
+  private String name;
 
-  @NotNull @Email private String email;
+  @NotBlank(message = "Password may not be blank")
+  private String password;
+
+  @NotBlank(message = "Email may not be blank")
+  @Email
+  private String email;
 }

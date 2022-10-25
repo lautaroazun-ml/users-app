@@ -3,6 +3,7 @@ package com.lazun.usersapp.controller;
 import com.lazun.usersapp.models.dto.LoginDTO;
 import com.lazun.usersapp.security.JWTAuthResponseDTO;
 import com.lazun.usersapp.security.JwtTokenProvider;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,7 +24,8 @@ public class AuthController {
   @Autowired private JwtTokenProvider jwtTokenProvider;
 
   @PostMapping("/login")
-  public ResponseEntity<JWTAuthResponseDTO> authenticateUser(@RequestBody LoginDTO loginDTO) {
+  public ResponseEntity<JWTAuthResponseDTO> authenticateUser(
+      @Valid @RequestBody LoginDTO loginDTO) {
     Authentication authentication =
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginDTO.getName(), loginDTO.getPassword()));

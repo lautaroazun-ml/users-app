@@ -2,6 +2,7 @@ package com.lazun.usersapp.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class ResourceController {
     return "Admin!";
   }
 
-  @GetMapping("/user")
+  @GetMapping("/users")
   public String userEndpoint() {
     return "User!";
   }
@@ -30,5 +31,10 @@ public class ResourceController {
   @DeleteMapping("/delete")
   public String deleteEndpoint(@RequestBody String s) {
     return "I am deleting " + s;
+  }
+
+  @PostMapping("/admin")
+  public String postAdmin(@RequestBody String s) {
+    return "I am posting " + s;
   }
 }
