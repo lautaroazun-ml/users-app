@@ -12,4 +12,27 @@ For using this app you should follow the next steps:
 The application provides an signUp and Login that response an Bearer Token with 1 day of expiration. This token must 
 be used on each API request.
 
+## Restrictions
+The next endpoint:
+```
+http://localhost:8080/fee/1/2?mock_error=false
+```
+Only will be able to 50 requests per day due to de mock external dependency restriction.
+
+## Usage
+Docker:
+1. Pull the docker image
+```bash
+docker pull lazun/users:latest
+```
+
+2. Up the docker compose
+
+```bash
+docker-compose up
+```
+
+
+
+
 
