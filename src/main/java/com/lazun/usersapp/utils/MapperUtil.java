@@ -1,14 +1,15 @@
 package com.lazun.usersapp.utils;
 
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class MapperUtil {
 
-  @Autowired private ModelMapper modelMapper;
+  private final ModelMapper modelMapper;
 
   /**
    * Maps the Page {@code entities} of <code>T</code> type which have to be mapped as input to

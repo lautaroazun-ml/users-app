@@ -6,17 +6,18 @@ import com.lazun.usersapp.models.entity.UserEntity;
 import com.lazun.usersapp.service.UserService;
 import com.lazun.usersapp.service.UserSignUpService;
 import java.time.LocalDateTime;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class UserSignUpServiceImpl implements UserSignUpService {
 
-  @Autowired private PasswordEncoder passwordEncoder;
+  private final PasswordEncoder passwordEncoder;
 
-  @Autowired private UserService userService;
+  private final UserService userService;
 
   @Transactional
   public void signUp(SignUpDTO userDto) throws AlreadyExistException {

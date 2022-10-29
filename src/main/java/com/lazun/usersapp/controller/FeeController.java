@@ -2,7 +2,7 @@ package com.lazun.usersapp.controller;
 
 import com.lazun.usersapp.models.dto.AmountDTO;
 import com.lazun.usersapp.service.FeeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("fee")
+@RequiredArgsConstructor
 public class FeeController {
 
-  @Autowired private FeeService feeService;
+  private final FeeService feeService;
 
   @GetMapping("/{first_number}/{snd_number}")
   public ResponseEntity<AmountDTO> getFee(

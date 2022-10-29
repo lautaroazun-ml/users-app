@@ -1,14 +1,15 @@
 package com.lazun.usersapp.controller;
 
 import com.lazun.usersapp.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
+@RequiredArgsConstructor
 public class UserController {
-  @Autowired private UserService service;
+  private final UserService service;
 
   @GetMapping("")
   public ResponseEntity<Boolean> existUserByName(@RequestParam(name = "name") String name) {

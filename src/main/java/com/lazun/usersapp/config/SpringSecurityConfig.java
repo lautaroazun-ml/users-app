@@ -3,7 +3,7 @@ package com.lazun.usersapp.config;
 import com.lazun.usersapp.security.CustomUserDetailsService;
 import com.lazun.usersapp.security.JwtAuthenticationEntryPoint;
 import com.lazun.usersapp.security.JwtAuthenticationFilter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
+@RequiredArgsConstructor
 public class SpringSecurityConfig {
 
   @Bean
@@ -26,12 +27,9 @@ public class SpringSecurityConfig {
     return new BCryptPasswordEncoder();
   }
 
-  @Autowired private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+  private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-  @Bean
-  public JwtAuthenticationFilter jwtAuthenticationFilter() {
-    return new JwtAuthenticationFilter();
-  }
+  private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -46,7 +44,7 @@ public class SpringSecurityConfig {
         .anyRequest()
         .authenticated()
         .and()
-        .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
         .sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

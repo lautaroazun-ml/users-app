@@ -3,9 +3,9 @@ package com.lazun.usersapp.controller;
 import com.lazun.usersapp.models.dto.SignUpDTO;
 import com.lazun.usersapp.service.UserSignUpService;
 import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("user/signup")
+@RequiredArgsConstructor
 public class SignUpController {
   private static final Logger logger = LogManager.getLogger(SignUpController.class);
 
-  @Autowired private UserSignUpService service;
+  private final UserSignUpService service;
 
   @PostMapping("")
   public ResponseEntity<String> signUp(@Valid @RequestBody SignUpDTO signUpDTO) {

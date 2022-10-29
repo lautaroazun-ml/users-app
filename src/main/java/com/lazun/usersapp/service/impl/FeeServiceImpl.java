@@ -3,13 +3,14 @@ package com.lazun.usersapp.service.impl;
 import com.lazun.usersapp.models.dto.AmountDTO;
 import com.lazun.usersapp.rest.user_fee.UserFeeRateRestClient;
 import com.lazun.usersapp.service.FeeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class FeeServiceImpl implements FeeService {
 
-  @Autowired private UserFeeRateRestClient userFeeRateRestClient;
+  private final UserFeeRateRestClient userFeeRateRestClient;
 
   @Override
   public AmountDTO sumWithFee(Integer firstNumber, Integer secNumber, Boolean mockError) {

@@ -11,19 +11,20 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
 @Component
+@RequiredArgsConstructor
 public class RequestFilter implements Filter {
   private static final Logger LOGGER = LoggerFactory.getLogger(RequestFilter.class);
 
-  @Autowired private EndpointLoggerService endpointLogger;
+  private final EndpointLoggerService endpointLogger;
 
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
