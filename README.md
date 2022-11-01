@@ -13,7 +13,7 @@ The application provides an signUp and Login that response an Bearer Token with 
 be used on each API request.
 
 ## Restrictions
-The next 2 endpoints:
+The next endpoint:
 ```
 http://localhost:8080/fee/1/2?mock_error=false
 ```
@@ -24,15 +24,15 @@ Docker:
 
 1. Move to the directory where docker-compose.yml is allocated.
 2. Pull the docker image
-```bash
-docker pull lazun/users:latest
-```
+    ```bash
+    docker pull lazun/users:latest
+    ```
 
 3. Up the docker compose
 
-```bash
-docker-compose up
-```
+    ```bash
+    docker-compose up
+    ```
 
 ## Use cases
 
