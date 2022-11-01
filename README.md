@@ -21,12 +21,14 @@ Only will be able to 50 requests per day due to the mock external dependency res
 
 ## Installation
 Docker:
-1. Pull the docker image
+
+1. Move to the directory where docker-compose.yml is allocated.
+2. Pull the docker image
 ```bash
 docker pull lazun/users:latest
 ```
 
-2. Up the docker compose
+3. Up the docker compose
 
 ```bash
 docker-compose up
