@@ -41,9 +41,9 @@ public class UserFeeRateRestClientImpl implements UserFeeRateRestClient {
       url = mockErrorURL;
     }
     try {
-      ResponseEntity<?> responseEntity =
+      ResponseEntity<UserFeeResponse> responseEntity =
           restTemplate.exchange(url, HttpMethod.GET, null, UserFeeResponse.class);
-      UserFeeResponse userFeeResponse = (UserFeeResponse) responseEntity.getBody();
+      UserFeeResponse userFeeResponse = responseEntity.getBody();
       lastFeeResponse = userFeeResponse.getFeeRate();
       return lastFeeResponse;
     } catch (HttpStatusCodeException exception) {

@@ -13,9 +13,9 @@ public class FeeServiceImpl implements FeeService {
   private final UserFeeRateRestClient userFeeRateRestClient;
 
   @Override
-  public AmountDTO sumWithFee(Integer firstNumber, Integer secNumber, Boolean mockError) {
+  public AmountDTO sumWithFee(Integer firstNumber, Integer sndNumber, Boolean mockError) {
     Float fee = userFeeRateRestClient.getUserFee(mockError);
-    Float newAmount = (firstNumber + secNumber) * (1 + fee);
+    Float newAmount = (firstNumber + sndNumber) * (1 + fee);
     AmountDTO amountDTO = new AmountDTO();
     amountDTO.setAmount(newAmount);
     return amountDTO;

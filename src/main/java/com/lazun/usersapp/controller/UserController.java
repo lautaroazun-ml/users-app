@@ -6,12 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("users")
 @RequiredArgsConstructor
 public class UserController {
   private final UserService service;
 
-  @GetMapping("")
+  @GetMapping("/exists")
   public ResponseEntity<Boolean> existUserByName(@RequestParam(name = "name") String name) {
     Boolean existsUserName = service.existsByName(name);
     if (existsUserName) {

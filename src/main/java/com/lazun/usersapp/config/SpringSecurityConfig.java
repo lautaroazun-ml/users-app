@@ -39,7 +39,7 @@ public class SpringSecurityConfig {
         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
         .and()
         .authorizeRequests()
-        .antMatchers("/auth/login/**", "/user/**")
+        .antMatchers("/auth/login/**", "/user/signup/**")
         .anonymous()
         .anyRequest()
         .authenticated()
